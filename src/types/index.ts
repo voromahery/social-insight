@@ -86,6 +86,16 @@ export interface AudienceSegment {
   interests: string[]
 }
 
+export interface PlatformAdReach {
+  facebook?: number
+  instagram?: number
+  youtube?: number
+  tiktok?: number
+  linkedin?: number
+  x?: number
+  pinterest?: number
+}
+
 export interface GeographicMarket {
   id: string
   name: string
@@ -100,6 +110,11 @@ export interface GeographicMarket {
   primaryLanguages: string[]
   gdpPerCapita?: string
   dataAvailability: ConfidenceLevel
+  platformAdReach?: PlatformAdReach
+  socialAdSpendPerUserUSD?: number
+  avgTimeOnTikTokHoursPerMonth?: number
+  socialBehaviourNotes?: string
+  source?: string
 }
 
 export interface TrendObservation {

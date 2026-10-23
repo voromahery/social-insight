@@ -1,0 +1,589 @@
+{
+  "_meta": {
+    "sources": [
+      "DataReportal Digital 2025 Global Overview (datareportal.com/reports/digital-2025-global-overview-report)",
+      "DataReportal Essential Facebook Stats (datareportal.com/essential-facebook-stats)",
+      "DataReportal Essential Instagram Stats (datareportal.com/essential-instagram-stats)",
+      "DataReportal Top Social Platforms 2025 (datareportal.com/reports/digital-2025-sub-section-top-social-platforms)",
+      "DataReportal State of Social 2025 (datareportal.com/reports/digital-2025-sub-section-state-of-social)"
+    ],
+    "dataDate": "2025-01-01",
+    "notes": "Ad reach figures are from platform ad planning tools and are not a direct proxy for MAU. All figures are reference data only."
+  },
+  "globalStats": {
+    "socialMediaUserIdentities": 5240000000,
+    "internetUsers": 5560000000,
+    "internetPenetration": 67.9,
+    "socialMediaPenetration": 63.9,
+    "avgPlatformsPerUser": 6.66,
+    "avgTimePerWeekHours": 19.3,
+    "source": "DataReportal Digital 2025"
+  },
+  "regions": [
+    {
+      "id": "southern-asia",
+      "name": "Southern Asia",
+      "lat": 20.0,
+      "lng": 78.0,
+      "facebookAdReach": 520000000,
+      "instagramAdReach": 448000000,
+      "socialMediaAdoptionNote": "Strong, driven by India and Bangladesh",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "south-eastern-asia",
+      "name": "South-Eastern Asia",
+      "lat": 4.0,
+      "lng": 115.0,
+      "facebookAdReach": 398000000,
+      "instagramAdReach": 177000000,
+      "socialMediaAdoptionNote": "Very high engagement; Philippines and Indonesia are top markets",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "southern-america",
+      "name": "Southern America",
+      "lat": -15.0,
+      "lng": -56.0,
+      "facebookAdReach": 257000000,
+      "instagramAdReach": 237000000,
+      "tiktokAdReach": 228000000,
+      "socialMediaAdoptionNote": "High influencer following; Brazil leads",
+      "source": "DataReportal / Meta / ByteDance Jan 2025"
+    },
+    {
+      "id": "northern-america",
+      "name": "Northern America",
+      "lat": 48.0,
+      "lng": -102.0,
+      "facebookAdReach": 221000000,
+      "instagramAdReach": 192000000,
+      "tiktokAdReach": 149000000,
+      "socialAdSpendPerUserUSD": 335,
+      "socialMediaAdoptionNote": "Highest ad spend per user globally",
+      "source": "DataReportal / Meta / ByteDance Jan 2025"
+    },
+    {
+      "id": "western-asia",
+      "name": "Western Asia",
+      "lat": 32.0,
+      "lng": 44.0,
+      "facebookAdReach": 115000000,
+      "instagramAdReach": 133000000,
+      "socialMediaAdoptionNote": "High mobile speed; UAE leads in platforms used per user",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "northern-africa",
+      "name": "Northern Africa",
+      "lat": 26.0,
+      "lng": 17.0,
+      "facebookAdReach": 110000000,
+      "socialMediaAdoptionNote": "Egypt is a major TikTok market",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "central-america",
+      "name": "Central America",
+      "lat": 15.0,
+      "lng": -86.0,
+      "facebookAdReach": 120000000,
+      "socialMediaAdoptionNote": "Mexico dominates; high TikTok penetration",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "western-europe",
+      "name": "Western Europe",
+      "lat": 48.0,
+      "lng": 4.0,
+      "facebookAdReach": 77000000,
+      "socialMediaAdoptionNote": "Germany and France are key markets",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "southern-europe",
+      "name": "Southern Europe",
+      "lat": 42.0,
+      "lng": 14.0,
+      "facebookAdReach": 71100000,
+      "socialMediaAdoptionNote": "Turkey has strong Instagram presence",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "western-africa",
+      "name": "Western Africa",
+      "lat": 8.0,
+      "lng": 2.0,
+      "facebookAdReach": 74700000,
+      "socialMediaAdoptionNote": "Nigeria leads; highest brand research on social globally (~70%)",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "eastern-europe",
+      "name": "Eastern Europe",
+      "lat": 52.0,
+      "lng": 31.0,
+      "facebookAdReach": 61300000,
+      "tiktokAdReach": 56000000,
+      "socialMediaAdoptionNote": "Russia has significant TikTok usage despite restrictions",
+      "source": "DataReportal / Meta / ByteDance Jan 2025"
+    },
+    {
+      "id": "northern-europe",
+      "name": "Northern Europe",
+      "lat": 58.0,
+      "lng": 14.0,
+      "facebookAdReach": 59600000,
+      "socialMediaAdoptionNote": "UK is the largest single market; high LinkedIn penetration",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "eastern-africa",
+      "name": "Eastern Africa",
+      "lat": -2.0,
+      "lng": 37.0,
+      "facebookAdReach": 55500000,
+      "socialMediaAdoptionNote": "Growing market; mobile-first",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "eastern-asia",
+      "name": "Eastern Asia",
+      "lat": 35.0,
+      "lng": 116.0,
+      "facebookAdReach": 50300000,
+      "socialMediaAdoptionNote": "Almost 97% social adoption among connected population; WeChat dominant in China",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "southern-africa",
+      "name": "Southern Africa",
+      "lat": -28.0,
+      "lng": 25.0,
+      "facebookAdReach": 29800000,
+      "socialMediaAdoptionNote": "South Africa has 50%+ social media for work usage",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "oceania",
+      "name": "Oceania",
+      "lat": -22.0,
+      "lng": 140.0,
+      "facebookAdReach": 23600000,
+      "socialMediaAdoptionNote": "Australia and New Zealand lead",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "middle-africa",
+      "name": "Middle Africa",
+      "lat": 0.0,
+      "lng": 22.0,
+      "facebookAdReach": 21100000,
+      "socialMediaAdoptionNote": "Barely 3 in 10 internet users use social media; lowest globally",
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "caribbean",
+      "name": "Caribbean",
+      "lat": 18.0,
+      "lng": -70.0,
+      "facebookAdReach": 13800000,
+      "source": "DataReportal / Meta Jan 2025"
+    },
+    {
+      "id": "central-asia",
+      "name": "Central Asia",
+      "lat": 46.0,
+      "lng": 63.0,
+      "facebookAdReach": 6410000,
+      "source": "DataReportal / Meta Jan 2025"
+    }
+  ],
+  "countries": [
+    {
+      "id": "in",
+      "name": "India",
+      "countryCode": "IN",
+      "lat": 20.5937,
+      "lng": 78.9629,
+      "population": 1428000000,
+      "internetPenetration": "52%",
+      "topPlatforms": ["youtube", "instagram", "facebook", "telegram", "whatsapp"],
+      "primaryLanguages": ["hi", "en"],
+      "gdpPerCapita": "$2,400",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "facebook": 384000000,
+        "instagram": 414000000,
+        "youtube": 490000000
+      },
+      "socialBehaviourNotes": "YouTube #1 by reach; Instagram overtook Facebook in ad reach",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "us",
+      "name": "United States",
+      "countryCode": "US",
+      "lat": 37.0902,
+      "lng": -95.7129,
+      "population": 335000000,
+      "internetPenetration": "93%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "tiktok", "x", "linkedin"],
+      "primaryLanguages": ["en"],
+      "gdpPerCapita": "$76,000",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "facebook": 197000000,
+        "instagram": 172000000,
+        "tiktok": 136000000
+      },
+      "socialAdSpendPerUserUSD": 335,
+      "avgTimeOnTikTokHoursPerMonth": 44,
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "br",
+      "name": "Brazil",
+      "countryCode": "BR",
+      "lat": -14.2350,
+      "lng": -51.9253,
+      "population": 214000000,
+      "internetPenetration": "84%",
+      "topPlatforms": ["youtube", "instagram", "tiktok", "facebook"],
+      "primaryLanguages": ["pt"],
+      "gdpPerCapita": "$9,100",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "facebook": 112000000,
+        "instagram": 141000000,
+        "tiktok": 91700000
+      },
+      "socialBehaviourNotes": "64.6% use social for brand research; 41.8% follow influencers (2nd globally)",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "id",
+      "name": "Indonesia",
+      "countryCode": "ID",
+      "lat": -0.7893,
+      "lng": 113.9213,
+      "population": 277500000,
+      "internetPenetration": "74.6%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "tiktok", "whatsapp"],
+      "primaryLanguages": ["id"],
+      "gdpPerCapita": "$4,800",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "facebook": 122000000,
+        "instagram": 103000000,
+        "tiktok": 108000000
+      },
+      "socialBehaviourNotes": "66.7% use social for brand research; top TikTok market",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "mx",
+      "name": "Mexico",
+      "countryCode": "MX",
+      "lat": 23.6345,
+      "lng": -102.5528,
+      "population": 128000000,
+      "internetPenetration": "76%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "tiktok"],
+      "primaryLanguages": ["es"],
+      "gdpPerCapita": "$11,000",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "facebook": 93000000,
+        "instagram": 48800000,
+        "tiktok": 85400000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "ph",
+      "name": "Philippines",
+      "countryCode": "PH",
+      "lat": 12.8797,
+      "lng": 121.7740,
+      "population": 113000000,
+      "internetPenetration": "73%",
+      "topPlatforms": ["facebook", "youtube", "tiktok", "instagram"],
+      "primaryLanguages": ["fil", "en"],
+      "gdpPerCapita": "$3,800",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "facebook": 90800000,
+        "tiktok": 62300000
+      },
+      "socialBehaviourNotes": "Almost 45% follow influencers — highest globally; 8.36 platforms/month",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "vn",
+      "name": "Vietnam",
+      "countryCode": "VN",
+      "lat": 14.0583,
+      "lng": 108.2772,
+      "population": 97000000,
+      "internetPenetration": "79%",
+      "topPlatforms": ["youtube", "facebook", "tiktok", "instagram"],
+      "primaryLanguages": ["vi"],
+      "gdpPerCapita": "$4,100",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "facebook": 76200000,
+        "tiktok": 40900000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "bd",
+      "name": "Bangladesh",
+      "countryCode": "BD",
+      "lat": 23.6850,
+      "lng": 90.3563,
+      "population": 170000000,
+      "internetPenetration": "44%",
+      "topPlatforms": ["facebook", "youtube", "tiktok"],
+      "primaryLanguages": ["bn"],
+      "gdpPerCapita": "$2,700",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "facebook": 60000000,
+        "tiktok": 46500000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "th",
+      "name": "Thailand",
+      "countryCode": "TH",
+      "lat": 15.8700,
+      "lng": 100.9925,
+      "population": 71000000,
+      "internetPenetration": "85%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "tiktok", "line"],
+      "primaryLanguages": ["th"],
+      "gdpPerCapita": "$7,200",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "facebook": 51000000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "pk",
+      "name": "Pakistan",
+      "countryCode": "PK",
+      "lat": 30.3753,
+      "lng": 69.3451,
+      "population": 231000000,
+      "internetPenetration": "36%",
+      "topPlatforms": ["youtube", "facebook", "tiktok", "whatsapp"],
+      "primaryLanguages": ["ur", "en"],
+      "gdpPerCapita": "$1,600",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "facebook": 49400000,
+        "tiktok": 66900000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "tr",
+      "name": "Turkey",
+      "countryCode": "TR",
+      "lat": 38.9637,
+      "lng": 35.2433,
+      "population": 85000000,
+      "internetPenetration": "85%",
+      "topPlatforms": ["youtube", "instagram", "tiktok", "facebook"],
+      "primaryLanguages": ["tr"],
+      "gdpPerCapita": "$13,000",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "instagram": 58500000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "jp",
+      "name": "Japan",
+      "countryCode": "JP",
+      "lat": 36.2048,
+      "lng": 138.2529,
+      "population": 124000000,
+      "internetPenetration": "93%",
+      "topPlatforms": ["youtube", "instagram", "x", "line"],
+      "primaryLanguages": ["ja"],
+      "gdpPerCapita": "$34,000",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "instagram": 57500000
+      },
+      "socialBehaviourNotes": "Fewer than 3 in 10 use social for brand research; lowest social-for-work globally",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "gb",
+      "name": "United Kingdom",
+      "countryCode": "GB",
+      "lat": 55.3781,
+      "lng": -3.4360,
+      "population": 67800000,
+      "internetPenetration": "97%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "tiktok", "x"],
+      "primaryLanguages": ["en"],
+      "gdpPerCapita": "$47,000",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "instagram": 33400000
+      },
+      "socialAdSpendPerUserUSD": 876,
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "de",
+      "name": "Germany",
+      "countryCode": "DE",
+      "lat": 51.1657,
+      "lng": 10.4515,
+      "population": 84400000,
+      "internetPenetration": "93%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "linkedin"],
+      "primaryLanguages": ["de"],
+      "gdpPerCapita": "$51,000",
+      "dataAvailability": "high",
+      "platformAdReach": {
+        "instagram": 31300000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "ar",
+      "name": "Argentina",
+      "countryCode": "AR",
+      "lat": -38.4161,
+      "lng": -63.6167,
+      "population": 46000000,
+      "internetPenetration": "87%",
+      "topPlatforms": ["youtube", "instagram", "tiktok", "facebook", "x"],
+      "primaryLanguages": ["es"],
+      "gdpPerCapita": "$11,600",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "instagram": 28900000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "ru",
+      "name": "Russia",
+      "countryCode": "RU",
+      "lat": 61.5240,
+      "lng": 105.3188,
+      "population": 144000000,
+      "internetPenetration": "88%",
+      "topPlatforms": ["vk", "youtube", "telegram", "tiktok"],
+      "primaryLanguages": ["ru"],
+      "gdpPerCapita": "$14,000",
+      "dataAvailability": "low",
+      "platformAdReach": {
+        "tiktok": 56000000
+      },
+      "socialBehaviourNotes": "Only 6.7% follow influencers — lowest globally",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "eg",
+      "name": "Egypt",
+      "countryCode": "EG",
+      "lat": 26.8206,
+      "lng": 30.8025,
+      "population": 104000000,
+      "internetPenetration": "72%",
+      "topPlatforms": ["facebook", "youtube", "tiktok", "instagram"],
+      "primaryLanguages": ["ar"],
+      "gdpPerCapita": "$4,200",
+      "dataAvailability": "medium",
+      "platformAdReach": {
+        "tiktok": 41300000
+      },
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "ng",
+      "name": "Nigeria",
+      "countryCode": "NG",
+      "lat": 9.0820,
+      "lng": 8.6753,
+      "population": 218000000,
+      "internetPenetration": "43%",
+      "topPlatforms": ["facebook", "youtube", "instagram", "whatsapp", "tiktok"],
+      "primaryLanguages": ["en", "yo", "ha", "ig"],
+      "gdpPerCapita": "$2,200",
+      "dataAvailability": "medium",
+      "socialBehaviourNotes": "Almost 70% use social for brand research — #1 globally; 56.6% use it for news — #1 globally",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "ca",
+      "name": "Canada",
+      "countryCode": "CA",
+      "lat": 56.1304,
+      "lng": -106.3468,
+      "population": 38200000,
+      "internetPenetration": "95%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "tiktok", "linkedin"],
+      "primaryLanguages": ["en", "fr"],
+      "gdpPerCapita": "$52,000",
+      "dataAvailability": "high",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "au",
+      "name": "Australia",
+      "countryCode": "AU",
+      "lat": -25.2744,
+      "lng": 133.7751,
+      "population": 26500000,
+      "internetPenetration": "96%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "tiktok"],
+      "primaryLanguages": ["en"],
+      "gdpPerCapita": "$55,000",
+      "dataAvailability": "high",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "ae",
+      "name": "United Arab Emirates",
+      "countryCode": "AE",
+      "lat": 23.4241,
+      "lng": 53.8478,
+      "population": 9700000,
+      "internetPenetration": "99%",
+      "topPlatforms": ["youtube", "instagram", "facebook", "tiktok", "snapchat"],
+      "primaryLanguages": ["ar", "en"],
+      "gdpPerCapita": "$49,000",
+      "dataAvailability": "medium",
+      "socialBehaviourNotes": "8.62 platforms used per month — highest globally; fastest mobile speeds globally (441 Mbps)",
+      "source": "DataReportal Jan 2025"
+    },
+    {
+      "id": "za",
+      "name": "South Africa",
+      "countryCode": "ZA",
+      "lat": -30.5595,
+      "lng": 22.9375,
+      "population": 60000000,
+      "internetPenetration": "72%",
+      "topPlatforms": ["youtube", "facebook", "instagram", "whatsapp", "tiktok"],
+      "primaryLanguages": ["en", "zu", "xh", "af"],
+      "gdpPerCapita": "$6,100",
+      "dataAvailability": "medium",
+      "socialBehaviourNotes": "79.1% computer internet use; more than 50% use social for work",
+      "source": "DataReportal Jan 2025"
+    }
+  ]
+}
