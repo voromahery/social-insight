@@ -48,7 +48,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) setUser(JSON.parse(stored) as User)
+      if (stored) {
+        setUser(JSON.parse(stored) as User)
+      } else {
+        // Dev default: seed as voromahery so the app is usable without logging in
+        const devUser = createMockUser('voromahery@github', 'voromahery')
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(devUser))
+        setUser(devUser)
+      }
     } catch {
       // ignore parse errors
     }
