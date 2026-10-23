@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { sendPasswordResetEmail } from 'firebase/auth'
 import { TrendingUp, CheckCircle } from 'lucide-react'
+import { auth } from '../../lib/firebase'
 import { Input } from '../../components/ui/Input'
 import { Button } from '../../components/ui/Button'
 
@@ -22,8 +24,8 @@ export default function ForgotPasswordPage() {
     formState: { errors, isSubmitting },
   } = useForm<FormData>({ resolver: zodResolver(schema) })
 
-  const onSubmit = async (_data: FormData) => {
-    await new Promise((r) => setTimeout(r, 500))
+  const onSubmit = async (data: FormData) => {
+    await sendPasswordResetEmail(auth, data.email)
     setSubmitted(true)
   }
 

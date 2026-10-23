@@ -1,11 +1,24 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
+  type User as FirebaseUser,
+} from 'firebase/auth'
+import { auth, googleProvider, facebookProvider, twitterProvider } from '../../lib/firebase'
 import type { User, UserPreferences } from '../../types'
 
 interface AuthContextValue {
   user: User | null
   isLoading: boolean
   login: (email: string, password: string) => Promise<void>
-  logout: () => void
+  loginWithGoogle: () => Promise<void>
+  loginWithFacebook: () => Promise<void>
+  loginWithTwitter: () => Promise<void>
+  logout: () => Promise<void>
   register: (email: string, password: string, name: string) => Promise<void>
 }
 
@@ -29,65 +42,60 @@ const DEFAULT_PREFERENCES: UserPreferences = {
   },
 }
 
-function createMockUser(email: string, name: string): User {
+function firebaseUserToAppUser(fbUser: FirebaseUser): User {
   return {
-    id: `user-${Date.now()}`,
-    email,
-    name,
+    id: fbUser.uid,
+    email: fbUser.email ?? '',
+    name: fbUser.displayName ?? fbUser.email?.split('@')[0] ?? 'User',
     preferences: DEFAULT_PREFERENCES,
-    createdAt: new Date().toISOString(),
+    createdAt: fbUser.metadata.creationTime ?? new Date().toISOString(),
   }
 }
-
-const STORAGE_KEY = 'si_user'
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        setUser(JSON.parse(stored) as User)
-      } else {
-        // Dev default: seed as voromahery so the app is usable without logging in
-        const devUser = createMockUser('voromahery@github', 'voromahery')
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(devUser))
-        setUser(devUser)
-      }
-    } catch {
-      // ignore parse errors
-    }
-    setIsLoading(false)
+    const unsub = onAuthStateChanged(auth, (fbUser) => {
+      setUser(fbUser ? firebaseUserToAppUser(fbUser) : null)
+      setIsLoading(false)
+    })
+    return unsub
   }, [])
 
-  const persist = (u: User | null) => {
-    setUser(u)
-    if (u) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(u))
-    } else {
-      localStorage.removeItem(STORAGE_KEY)
-    }
+  const login = async (email: string, password: string) => {
+    await signInWithEmailAndPassword(auth, email, password)
   }
 
-  const login = async (email: string, _password: string) => {
-    // Dev mode: accept any credentials, create mock user
-    await new Promise((r) => setTimeout(r, 400))
-    const u = createMockUser(email, email.split('@')[0])
-    persist(u)
+  const register = async (email: string, password: string, name: string) => {
+    const cred = await createUserWithEmailAndPassword(auth, email, password)
+    await updateProfile(cred.user, { displayName: name })
+    setUser(firebaseUserToAppUser({ ...cred.user, displayName: name }))
   }
 
-  const register = async (email: string, _password: string, name: string) => {
-    await new Promise((r) => setTimeout(r, 400))
-    const u = createMockUser(email, name)
-    persist(u)
+  const loginWithGoogle = async () => {
+    await signInWithPopup(auth, googleProvider)
   }
 
-  const logout = () => persist(null)
+  const loginWithFacebook = async () => {
+    await signInWithPopup(auth, facebookProvider)
+  }
+
+  const loginWithTwitter = async () => {
+    await signInWithPopup(auth, twitterProvider)
+  }
+
+  const logout = async () => {
+    await signOut(auth)
+  }
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, logout, register }}>
+    <AuthContext.Provider value={{
+      user, isLoading,
+      login, loginWithGoogle, loginWithFacebook, loginWithTwitter,
+      logout, register,
+    }}>
       {children}
     </AuthContext.Provider>
   )

@@ -107,7 +107,7 @@ export default function Layout() {
             {!collapsed && (
               <div className="flex-1 min-w-0">
                 <p className="text-xs font-medium text-white truncate">{user.name}</p>
-                <button onClick={logout} className="text-xs text-slate-500 hover:text-slate-300">Sign out</button>
+                <button onClick={() => void logout()} className="text-xs text-slate-500 hover:text-slate-300">Sign out</button>
               </div>
             )}
           </div>
