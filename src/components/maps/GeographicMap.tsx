@@ -62,7 +62,7 @@ export function GeographicMap({ markets = GEOGRAPHIC_MARKETS, focusedMarket, hei
         center={[20, 0]}
         zoom={2}
         style={{ height: '100%', width: '100%' }}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
         minZoom={1}
       >
         <FlyToMarket market={focusedMarket} />
