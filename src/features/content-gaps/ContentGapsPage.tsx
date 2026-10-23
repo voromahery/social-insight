@@ -30,8 +30,22 @@ export default function ContentGapsPage() {
     )
     .sort((a, b) => b.score.total - a.score.total)
 
-  const handleSave = (_id: string) => {
-    // Save functionality connects to saved-insights page via localStorage in a future release
+  const handleSave = (id: string) => {
+    const opp = MOCK_OPPORTUNITIES.find(o => o.id === id)
+    if (!opp) return
+    try {
+      const existing: unknown[] = JSON.parse(localStorage.getItem('social-insight-saved') ?? '[]')
+      if (existing.some((i: unknown) => (i as { referenceId: string }).referenceId === id)) return
+      const item = {
+        id: `saved-${Date.now()}`,
+        type: 'opportunity',
+        referenceId: id,
+        title: opp.title,
+        tags: [opp.platform, opp.mode],
+        savedAt: new Date().toISOString(),
+      }
+      localStorage.setItem('social-insight-saved', JSON.stringify([...existing, item]))
+    } catch {}
   }
 
   return (

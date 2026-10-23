@@ -52,8 +52,8 @@ All platform statistics used in this application are sourced from the following 
 ## Tech Stack
 
 - **Frontend:** React 19, TypeScript, Vite 8, Tailwind CSS v4
-- **Charts:** Apache ECharts (`echarts-for-react`)
-- **Routing:** React Router v7 (TanStack Router migration planned — see [#1](https://github.com/voromahery/social-insight/issues/1))
+- **Charts:** Recharts
+- **Routing:** React Router v7
 - **Maps:** React Leaflet + OpenStreetMap
 - **Forms:** React Hook Form + Zod
 - **State / Data fetching:** TanStack Query

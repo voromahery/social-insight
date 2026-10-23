@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Globe, Map, AlertCircle, Wifi } from 'lucide-react'
 import { MOCK_MARKETS } from '../../mocks/geographic'
 import { Badge } from '../../components/ui/Badge'
+import { GeographicMap } from '../../components/maps/GeographicMap'
 import type { ConfidenceLevel } from '../../types'
 
 const dataAvailBadge: Record<ConfidenceLevel, { label: string; variant: 'success' | 'info' | 'warning' | 'outline' }> = {
@@ -26,15 +27,6 @@ export default function GeographicInsightsPage() {
         <p className="text-slate-500 text-sm">
           Explore market opportunities and audience distribution across global and local markets.
         </p>
-      </div>
-
-      {/* Map notice */}
-      <div className="flex items-start gap-3 bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
-        <Map className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
-        <div className="text-sm text-blue-700">
-          <span className="font-semibold">Interactive map coming in the next release.</span>{' '}
-          Geographic market data is displayed in the table below. Leaflet map integration with GeoJSON overlays is included in the codebase and will render once map tiles are configured.
-        </div>
       </div>
 
       {/* Scope selector */}
@@ -75,13 +67,9 @@ export default function GeographicInsightsPage() {
         </div>
       )}
 
-      {/* Map placeholder */}
-      <div className="bg-slate-100 rounded-xl border-2 border-dashed border-slate-300 h-64 flex items-center justify-center mb-6">
-        <div className="text-center">
-          <Map className="w-12 h-12 text-slate-300 mx-auto mb-2" />
-          <p className="text-slate-400 text-sm font-medium">Interactive Leaflet Map</p>
-          <p className="text-slate-400 text-xs mt-1">Will render when tile provider is configured</p>
-        </div>
+      {/* Leaflet map */}
+      <div className="mb-6">
+        <GeographicMap markets={displayMarkets.filter(m => m.lat !== undefined && m.lng !== undefined)} height="320px" />
       </div>
 
       {/* Market table */}
