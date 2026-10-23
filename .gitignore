@@ -23,3 +23,10 @@ skills/*
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code / IDE agent directories
+.agents/
+.claude/
+.codestudio/
+skills/
+skills-lock.json
