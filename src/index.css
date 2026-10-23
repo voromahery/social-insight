@@ -20,6 +20,10 @@
   html {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
   }
   body {
     @apply bg-slate-50 text-slate-900;
