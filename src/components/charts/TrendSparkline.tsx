@@ -1,4 +1,4 @@
-import { AreaChart, Area, ResponsiveContainer, Tooltip } from 'recharts'
+import ReactECharts from 'echarts-for-react'
 
 interface TrendSparklineProps {
   data: Array<{ date: string; value: number }>
@@ -6,38 +6,41 @@ interface TrendSparklineProps {
 }
 
 const colorMap = {
-  rising: { stroke: '#10b981', fill: '#10b981' },
-  emerging: { stroke: '#6366f1', fill: '#6366f1' },
-  stable: { stroke: '#64748b', fill: '#64748b' },
-  declining: { stroke: '#ef4444', fill: '#ef4444' },
+  rising: '#10b981',
+  emerging: '#6366f1',
+  stable: '#64748b',
+  declining: '#ef4444',
 }
 
 export function TrendSparkline({ data, direction }: TrendSparklineProps) {
-  const { stroke, fill } = colorMap[direction]
+  const color = colorMap[direction]
 
-  return (
-    <ResponsiveContainer width="100%" height={48}>
-      <AreaChart data={data} margin={{ top: 2, right: 2, bottom: 2, left: 2 }}>
-        <defs>
-          <linearGradient id={`sparkGrad-${direction}`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor={fill} stopOpacity={0.3} />
-            <stop offset="95%" stopColor={fill} stopOpacity={0} />
-          </linearGradient>
-        </defs>
-        <Tooltip
-          contentStyle={{ display: 'none' }}
-          cursor={false}
-        />
-        <Area
-          type="monotone"
-          dataKey="value"
-          stroke={stroke}
-          strokeWidth={2}
-          fill={`url(#sparkGrad-${direction})`}
-          dot={false}
-          isAnimationActive={false}
-        />
-      </AreaChart>
-    </ResponsiveContainer>
-  )
+  const option = {
+    grid: { top: 2, right: 2, bottom: 2, left: 2, containLabel: false },
+    xAxis: { type: 'category', data: data.map(d => d.date), show: false },
+    yAxis: { type: 'value', show: false },
+    series: [
+      {
+        type: 'line',
+        data: data.map(d => d.value),
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { color, width: 2 },
+        areaStyle: {
+          color: {
+            type: 'linear',
+            x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: color + '4d' },
+              { offset: 1, color: color + '00' },
+            ],
+          },
+        },
+        animation: false,
+      },
+    ],
+    tooltip: { show: false },
+  }
+
+  return <ReactECharts option={option} style={{ height: 48, width: '100%' }} />
 }
