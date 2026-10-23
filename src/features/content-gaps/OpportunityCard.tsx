@@ -11,6 +11,7 @@ interface OpportunityCardProps {
   opportunity: ContentOpportunity
   onSave?: () => void
   onDismiss?: () => void
+  saved?: boolean
 }
 
 const trendIcon = {
@@ -41,7 +42,7 @@ const modeLabel: Record<ContentOpportunity['mode'], string> = {
   'market-specific': 'Market-specific',
 }
 
-export function OpportunityCard({ opportunity, onSave, onDismiss }: OpportunityCardProps) {
+export function OpportunityCard({ opportunity, onSave, onDismiss, saved }: OpportunityCardProps) {
   const TrendIcon = trendIcon[opportunity.trendDirection]
   const coverage = coverageBadge[opportunity.competitorCoverage]
 
@@ -94,11 +95,17 @@ export function OpportunityCard({ opportunity, onSave, onDismiss }: OpportunityC
           {onSave && (
             <button
               onClick={onSave}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 transition-colors"
-              aria-label="Save opportunity"
-              title="Save"
+              disabled={saved}
+              className={cn(
+                'p-1.5 rounded-lg transition-colors',
+                saved
+                  ? 'text-indigo-600 cursor-default'
+                  : 'text-slate-400 hover:text-indigo-600 hover:bg-indigo-50'
+              )}
+              aria-label={saved ? 'Saved' : 'Save opportunity'}
+              title={saved ? 'Saved' : 'Save'}
             >
-              <Bookmark className="w-4 h-4" />
+              <Bookmark className={cn('w-4 h-4', saved && 'fill-current')} />
             </button>
           )}
           {onDismiss && (

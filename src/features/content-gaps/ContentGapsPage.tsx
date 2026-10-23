@@ -1,10 +1,34 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Search, Filter, AlertCircle } from 'lucide-react'
 import { MOCK_OPPORTUNITIES } from '../../mocks/opportunities'
 import { MOCK_PLATFORMS } from '../../mocks/platforms'
-import type { FilterState, ContentOpportunity } from '../../types'
+import type { FilterState, ContentOpportunity, SavedInsight } from '../../types'
 import { OpportunityCard } from './OpportunityCard'
 import { cn } from '../../lib/cn'
+
+const SAVED_KEY = 'social-insight-saved'
+
+function loadSaved(): string[] {
+  try { return (JSON.parse(localStorage.getItem(SAVED_KEY) ?? '[]') as SavedInsight[]).map(i => i.id) }
+  catch { return [] }
+}
+
+function saveOpportunity(opp: ContentOpportunity) {
+  try {
+    const existing: SavedInsight[] = JSON.parse(localStorage.getItem(SAVED_KEY) ?? '[]')
+    if (existing.find(i => i.id === opp.id)) return
+    const item: SavedInsight = {
+      id: opp.id,
+      type: 'opportunity',
+      title: opp.title,
+      summary: `Score: ${opp.score.total} · ${opp.platform} · ${opp.trendDirection}`,
+      tags: opp.topics,
+      savedAt: new Date().toISOString(),
+      sourceUrl: `/content-gaps/${opp.id}`,
+    }
+    localStorage.setItem(SAVED_KEY, JSON.stringify([item, ...existing]))
+  } catch {}
+}
 
 const MODES: Array<{ key: ContentOpportunity['mode'] | 'all'; label: string; description: string }> = [
   { key: 'all', label: 'All Opportunities', description: 'All discovered opportunities' },
@@ -18,6 +42,7 @@ export default function ContentGapsPage() {
   const [filters, setFilters] = useState<FilterState>({})
   const [activeMode, setActiveMode] = useState<ContentOpportunity['mode'] | 'all'>('all')
   const [searchQuery, setSearchQuery] = useState('')
+  const [savedIds, setSavedIds] = useState<string[]>(loadSaved)
   const filtered = MOCK_OPPORTUNITIES
     .filter(o => activeMode === 'all' || o.mode === activeMode)
     .filter(o => !filters.platform || o.platform === filters.platform)
@@ -30,23 +55,12 @@ export default function ContentGapsPage() {
     )
     .sort((a, b) => b.score.total - a.score.total)
 
-  const handleSave = (id: string) => {
+  const handleSave = useCallback((id: string) => {
     const opp = MOCK_OPPORTUNITIES.find(o => o.id === id)
-    if (!opp) return
-    try {
-      const existing: unknown[] = JSON.parse(localStorage.getItem('social-insight-saved') ?? '[]')
-      if (existing.some((i: unknown) => (i as { referenceId: string }).referenceId === id)) return
-      const item = {
-        id: `saved-${Date.now()}`,
-        type: 'opportunity',
-        referenceId: id,
-        title: opp.title,
-        tags: [opp.platform, opp.mode],
-        savedAt: new Date().toISOString(),
-      }
-      localStorage.setItem('social-insight-saved', JSON.stringify([...existing, item]))
-    } catch {}
-  }
+    if (!opp || savedIds.includes(id)) return
+    saveOpportunity(opp)
+    setSavedIds(prev => [...prev, id])
+  }, [savedIds])
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
@@ -201,6 +215,7 @@ export default function ContentGapsPage() {
                   key={opportunity.id}
                   opportunity={opportunity}
                   onSave={() => handleSave(opportunity.id)}
+                  saved={savedIds.includes(opportunity.id)}
                   onDismiss={undefined}
                 />
               ))}
