@@ -1,120 +1,79 @@
 # Social Insight
 
-**Discover the opportunities others overlook.**
+> Opportunity intelligence platform for content creators and marketers. Discover underserved content niches, track platform trends, and find monetization paths — backed by real public data.
 
-Social Insight is an opportunity intelligence platform that helps businesses, marketers, agencies, and content creators find underserved content niches, understand their market, evaluate competitors, and turn evidence-backed opportunities into actionable content and business strategies.
+**Copyright © 2025 H. Daniel Fabrice. All rights reserved.**
 
-## What It Does
+---
 
-Unlike conventional analytics dashboards, Social Insight answers:
+## Data Sources
 
-- **What should I create next?** — Ranked content opportunities with transparent scoring
-- **Where is there unmet demand?** — Topics with audience interest but weak content coverage
-- **What are competitors missing?** — Gap analysis across platforms and formats
-- **Where in the world is this relevant?** — Local and global geographic filters with Leaflet maps
-- **How can I monetize this?** — Structured monetization catalog with requirements and pathways
-- **What evidence supports this?** — Every insight links to sources, methodology, and limitations
+All platform statistics used in this application are sourced from the following **publicly available** reports and sites. Data is loaded at app startup and labelled clearly as reference data throughout the UI.
+
+### Primary Source
+
+| Source | URL | Data provided |
+|--------|-----|---------------|
+| **DataReportal — Digital 2025 Global Overview** | https://datareportal.com/reports/digital-2025-global-overview-report | Global social media user counts, ad reach, engagement, demographics |
+| **DataReportal — Top Social Platforms 2025** | https://datareportal.com/reports/digital-2025-sub-section-top-social-platforms | Per-platform MAU, ad reach, time-spent, favourite-platform rankings |
+| **DataReportal — Social Media Users** | https://datareportal.com/social-media-users | Aggregate social media user totals, platform penetration rates |
+| **DataReportal — State of Social 2025** | https://datareportal.com/reports/digital-2025-sub-section-state-of-social | Usage motivations, following behaviour, content publishing patterns |
+
+### Platform-Specific Sources
+
+| Source | URL | Data provided |
+|--------|-----|---------------|
+| **DataReportal — X (Twitter) Stats** | https://datareportal.com/essential-x-stats | X ad reach, user trends |
+| **DataReportal — LinkedIn Stats** | https://datareportal.com/essential-linkedin-stats | LinkedIn registered members, estimated MAU |
+| **DataReportal — Pinterest Stats** | https://datareportal.com/essential-pinterest-stats | Pinterest MAU (from earnings), ad reach |
+| **Backlinko — Twitch Statistics** | https://backlinko.com/twitch-users | Twitch monthly unique visitors, DAU, demographics |
+| **DemandSage — Discord Statistics** | https://demandsage.com/discord-statistics/ | Discord official MAU, registered users |
+
+### Key Figures Used (as of DataReportal Digital 2025, published Feb 2025)
+
+| Platform | Metric | Value | Source |
+|----------|--------|-------|--------|
+| YouTube | Ad reach | 2.53 billion | DataReportal / Google |
+| Facebook | Ad reach | 2.28 billion | DataReportal / Meta |
+| Instagram | Ad reach (18+) | 1.67 billion | DataReportal / Meta |
+| TikTok | Ad reach (18+) | 1.59 billion | DataReportal / ByteDance |
+| LinkedIn | Est. MAU | ~350 million | DataReportal (third-party est.) |
+| Pinterest | MAU | 537 million | Pinterest Q3 2024 earnings |
+| X (Twitter) | Ad reach | 586 million | DataReportal / X |
+| Reddit | Unique visitors/mo | ~700 million | DataReportal / Reddit |
+| Telegram | MAU | 1 billion+ | Founder statement, Mar 2025 |
+| Discord | MAU | 200 million+ | Discord official, 2025 |
+| Twitch | Monthly unique visitors | ~240 million | Backlinko / Semrush |
+
+> **Note:** Ad reach figures are not the same as monthly active users. Platforms define and report metrics differently. All figures are used here as reference data for illustrative purposes and may not reflect current real-world values. DataReportal's own reports include detailed caveats on comparability.
+
+---
 
 ## Tech Stack
 
-| Area | Technology |
-|------|-----------|
-| Framework | React 19 + TypeScript (strict) |
-| Build | Vite 8 |
-| Styling | Tailwind CSS v4 |
-| Routing | React Router v7 |
-| Data fetching | TanStack Query v5 |
-| Forms | React Hook Form + Zod |
-| Charts | Recharts |
-| Maps | Leaflet + React Leaflet |
-| Icons | Lucide React |
-| Utilities | Lodash, date-fns, clsx |
-| Testing | Vitest + React Testing Library |
-| PWA | vite-plugin-pwa |
+- **Frontend:** React 19, TypeScript, Vite 8, Tailwind CSS v4
+- **Charts:** Apache ECharts (`echarts-for-react`)
+- **Routing:** React Router v7 (TanStack Router migration planned — see [#1](https://github.com/voromahery/social-insight/issues/1))
+- **Maps:** React Leaflet + OpenStreetMap
+- **Forms:** React Hook Form + Zod
+- **State / Data fetching:** TanStack Query
+- **PWA:** vite-plugin-pwa
+- **Testing:** Vitest + Testing Library
 
 ## Getting Started
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
-npm run dev
-
-# Run tests
-npm test
-
-# Type check
-npm run typecheck
-
-# Lint
-npm run lint
-
-# Build for production
-npm run build
+npm run dev       # development server
+npm run build     # production build
+npm run test      # run tests
+npm run typecheck # type-check only
 ```
 
-## Project Structure
+## Project Status
 
-```
-src/
-├── app/              # Router, layout, landing page
-├── components/
-│   ├── charts/       # Recharts wrappers
-│   ├── maps/         # Leaflet map components
-│   └── ui/           # Reusable UI components
-├── features/
-│   ├── auth/         # Login, register, onboarding
-│   ├── content-gaps/ # Content Gap Explorer (flagship)
-│   ├── platforms/    # Platform directory
-│   ├── monetization/ # Monetization explorer
-│   ├── competitors/  # Competitor research
-│   ├── geographic-insights/ # Map-based market discovery
-│   ├── content-lab/  # Brief builder
-│   ├── experiments/  # Hypothesis tracking
-│   ├── saved-insights/ # Saved research
-│   └── reports/      # Report generation
-├── lib/
-│   ├── scoring.ts    # Opportunity scoring engine
-│   ├── export.ts     # CSV export utilities
-│   └── cn.ts         # Tailwind class merging
-├── mocks/            # Structured sample data
-├── queries/          # TanStack Query hooks
-├── schemas/          # Zod validation schemas
-├── services/         # Service layer
-├── test/             # Test setup
-└── types/            # TypeScript domain types
-```
+This is an MVP with illustrative sample data. Real API integrations are planned. See the [open issues](https://github.com/voromahery/social-insight/issues) for the roadmap.
 
-## Core Features
+---
 
-### Content Gap Explorer
-The flagship feature. Discover opportunities across four modes:
-- **Rising Demand** — Topics with measured growth in audience interest
-- **Underserved Topics** — High demand + low content coverage
-- **Audience Questions** — Recurring unmet information needs
-- **Market-Specific Gaps** — Opportunities in specific geographic markets
-
-### Transparent Opportunity Scoring
-Every opportunity is scored 0–100 using a configurable formula:
-```
-Score = 0.30×Demand + 0.20×Trend + 0.20×Scarcity + 0.15×Relevance + 0.15×Monetization
-```
-Missing inputs are excluded with renormalized weights — never silently zeroed.
-
-### Evidence System
-Every insight shows source name, URL, collection method, date, geographic scope, sample size, limitations, and confidence level. Data status labels (Verified / Published estimate / Illustrative) are shown on every card.
-
-### Geographic Intelligence
-Interactive Leaflet maps with pan, zoom, marker clustering, choropleth overlays, and accessible table alternatives. Global and local scope controls. Does not require geolocation permissions.
-
-### Monetization Catalog
-12+ monetization methods with requirements, eligibility, geographic availability, and platform compatibility. Separates direct platform monetization from business models.
-
-## Data Notice
-
-The initial release uses structured sample data clearly labeled as illustrative. The architecture is designed for future integration with official platform APIs, licensed market research, and user-provided data. No data is fabricated as verified market research.
-
-## License
-
-Private — all rights reserved.
+*Data sourced from public reports. Platform statistics are reference figures and should not be used for commercial or investment decisions without independent verification.*
