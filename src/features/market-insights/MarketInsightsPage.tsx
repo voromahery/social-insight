@@ -1,5 +1,5 @@
 import { TrendingUp, AlertCircle } from 'lucide-react'
-import ReactECharts from 'echarts-for-react'
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { Badge } from '../../components/ui/Badge'
 
 const SAMPLE_TRENDS = [
@@ -56,45 +56,17 @@ export default function MarketInsightsPage() {
       <div className="bg-white rounded-xl border border-slate-200 p-6">
         <h2 className="font-bold text-slate-900 mb-1">Rising Topic Interest — Sample Trend</h2>
         <p className="text-xs text-slate-500 mb-4">Illustrative interest index (0–100) for three trending topics over 6 months</p>
-        <ReactECharts
-          option={{
-            grid: { top: 10, right: 20, bottom: 20, left: 36 },
-            xAxis: {
-              type: 'category',
-              data: CHART_DATA.map(d => d.month),
-              axisLine: { show: false },
-              axisTick: { show: false },
-              axisLabel: { color: '#94a3b8', fontSize: 12 },
-              splitLine: { show: false },
-            },
-            yAxis: {
-              type: 'value',
-              min: 0,
-              max: 100,
-              axisLine: { show: false },
-              axisTick: { show: false },
-              axisLabel: { color: '#94a3b8', fontSize: 12 },
-              splitLine: { lineStyle: { color: '#f1f5f9' } },
-            },
-            tooltip: {
-              trigger: 'axis',
-              textStyle: { fontSize: 12 },
-              borderColor: '#e2e8f0',
-              borderRadius: 8,
-            },
-            legend: {
-              data: ['AI tools', 'Sustainability', 'Freelance finance'],
-              textStyle: { color: '#64748b', fontSize: 12 },
-              bottom: 0,
-            },
-            series: [
-              { name: 'AI tools', type: 'line', data: CHART_DATA.map(d => d.aiTools), smooth: true, symbol: 'none', lineStyle: { color: '#6366f1', width: 2 } },
-              { name: 'Sustainability', type: 'line', data: CHART_DATA.map(d => d.sustainability), smooth: true, symbol: 'none', lineStyle: { color: '#10b981', width: 2 } },
-              { name: 'Freelance finance', type: 'line', data: CHART_DATA.map(d => d.freelance), smooth: true, symbol: 'none', lineStyle: { color: '#f59e0b', width: 2 } },
-            ],
-          }}
-          style={{ height: 240 }}
-        />
+        <ResponsiveContainer width="100%" height={220}>
+          <LineChart data={CHART_DATA} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+            <XAxis dataKey="month" tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
+            <YAxis tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} domain={[0, 100]} />
+            <Tooltip contentStyle={{ fontSize: '12px', borderRadius: '8px', border: '1px solid #e2e8f0' }} />
+            <Line type="monotone" dataKey="aiTools" name="AI tools" stroke="#6366f1" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="sustainability" name="Sustainability" stroke="#10b981" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="freelance" name="Freelance finance" stroke="#f59e0b" strokeWidth={2} dot={false} />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
 
       {/* Trend table */}

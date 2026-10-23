@@ -1,4 +1,11 @@
-import ReactECharts from 'echarts-for-react'
+import {
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  ResponsiveContainer,
+  Tooltip,
+} from 'recharts'
 import type { OpportunityScore } from '../../types'
 
 interface OpportunityScoreBreakdownProps {
@@ -7,51 +14,45 @@ interface OpportunityScoreBreakdownProps {
 
 export function OpportunityScoreBreakdown({ score }: OpportunityScoreBreakdownProps) {
   const data = [
-    { name: 'Demand', value: score.demand },
-    { name: 'Trend', value: score.trendMomentum },
-    { name: 'Scarcity', value: score.contentScarcity },
-    { name: 'Relevance', value: score.audienceRelevance },
-    { name: 'Monetization', value: score.monetizationPotential },
+    { subject: 'Demand', value: score.demand, fullMark: 100 },
+    { subject: 'Trend', value: score.trendMomentum, fullMark: 100 },
+    { subject: 'Scarcity', value: score.contentScarcity, fullMark: 100 },
+    { subject: 'Relevance', value: score.audienceRelevance, fullMark: 100 },
+    { subject: 'Monetization', value: score.monetizationPotential, fullMark: 100 },
   ]
-
-  const option = {
-    radar: {
-      indicator: data.map(d => ({ name: d.name, max: 100 })),
-      splitLine: { lineStyle: { color: '#e2e8f0' } },
-      splitArea: { show: false },
-      axisLine: { lineStyle: { color: '#e2e8f0' } },
-      axisName: { color: '#64748b', fontSize: 12 },
-    },
-    series: [
-      {
-        type: 'radar',
-        data: [{ value: data.map(d => d.value), name: 'Score' }],
-        lineStyle: { color: '#6366f1', width: 2 },
-        areaStyle: { color: '#6366f1', opacity: 0.18 },
-        itemStyle: { color: '#6366f1' },
-        symbol: 'none',
-      },
-    ],
-    tooltip: {
-      trigger: 'item',
-      formatter: (params: { value: number[] }) => {
-        return data
-          .map((d, i) => `${d.name}: <b>${params.value[i]}</b>`)
-          .join('<br/>')
-      },
-      textStyle: { fontSize: 12 },
-      borderColor: '#e2e8f0',
-      borderRadius: 8,
-    },
-  }
 
   return (
     <div className="w-full">
-      <ReactECharts option={option} style={{ height: 260 }} />
+      <ResponsiveContainer width="100%" height={260}>
+        <RadarChart data={data} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
+          <PolarGrid stroke="#e2e8f0" />
+          <PolarAngleAxis
+            dataKey="subject"
+            tick={{ fontSize: 12, fill: '#64748b' }}
+          />
+          <Tooltip
+            formatter={(value) => [`${value}`, 'Score']}
+            contentStyle={{
+              background: 'white',
+              border: '1px solid #e2e8f0',
+              borderRadius: '8px',
+              fontSize: '12px',
+            }}
+          />
+          <Radar
+            name="Score"
+            dataKey="value"
+            stroke="#6366f1"
+            fill="#6366f1"
+            fillOpacity={0.18}
+            strokeWidth={2}
+          />
+        </RadarChart>
+      </ResponsiveContainer>
       <div className="mt-2 grid grid-cols-2 gap-x-6 gap-y-1.5 text-sm">
-        {data.map(d => (
-          <div key={d.name} className="flex items-center justify-between">
-            <span className="text-slate-600 text-xs">{d.name}</span>
+        {data.map((d) => (
+          <div key={d.subject} className="flex items-center justify-between">
+            <span className="text-slate-600 text-xs">{d.subject}</span>
             <span className="font-semibold text-slate-900 text-xs">{d.value}</span>
           </div>
         ))}
