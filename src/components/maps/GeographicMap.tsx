@@ -1,6 +1,7 @@
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
-import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet'
+import { useEffect } from 'react'
+import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet'
 import type { GeographicMarket } from '../../types'
 import { GEOGRAPHIC_MARKETS } from '../../data'
 
@@ -11,8 +12,21 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 })
 
+function FlyToMarket({ market }: { market: GeographicMarket | undefined }) {
+  const map = useMap()
+  useEffect(() => {
+    if (market?.lat !== undefined && market?.lng !== undefined) {
+      map.flyTo([market.lat, market.lng], 5, { duration: 1.2 })
+    } else {
+      map.flyTo([20, 0], 2, { duration: 1.2 })
+    }
+  }, [market, map])
+  return null
+}
+
 interface GeographicMapProps {
   markets?: GeographicMarket[]
+  focusedMarket?: GeographicMarket
   height?: string
 }
 
@@ -40,7 +54,7 @@ const AVAILABILITY_COLORS: Record<string, string> = {
   insufficient: '#94a3b8',
 }
 
-export function GeographicMap({ markets = GEOGRAPHIC_MARKETS, height = '400px' }: GeographicMapProps) {
+export function GeographicMap({ markets = GEOGRAPHIC_MARKETS, focusedMarket, height = '400px' }: GeographicMapProps) {
   const positioned = markets.filter(m => m.lat !== undefined && m.lng !== undefined)
 
   return (
@@ -52,6 +66,7 @@ export function GeographicMap({ markets = GEOGRAPHIC_MARKETS, height = '400px' }
         scrollWheelZoom={false}
         minZoom={1}
       >
+        <FlyToMarket market={focusedMarket} />
         <TileLayer
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Data: <a href="https://datareportal.com">DataReportal</a>'

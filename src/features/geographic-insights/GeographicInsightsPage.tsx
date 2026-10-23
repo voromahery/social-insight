@@ -108,7 +108,11 @@ export default function GeographicInsightsPage() {
             ))}
           </div>
         </div>
-        <GeographicMap markets={displayMarkets} height="380px" />
+        <GeographicMap
+          markets={displayMarkets}
+          focusedMarket={selectedCountry ? GEOGRAPHIC_MARKETS.find(m => m.countryCode === selectedCountry) : undefined}
+          height="380px"
+        />
       </div>
 
       {/* Market table */}
